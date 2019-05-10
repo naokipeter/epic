@@ -9,9 +9,16 @@
         // Get date
         dateString = date.toISOString().substr(0, 10);
         
-        // Do call
+        // Do API call
         let response = await fetch(url + '&date=' + dateString);
-        let data     = await response.json();
+
+        // Check if response is valid
+        if (response.status !== 200) {
+            continue;
+        }
+
+        // Get JSON data
+        let data = await response.json();
         
         // Make nodes
         let li          = document.createElement('li');
