@@ -33,9 +33,15 @@
     height: 400px;
     object-fit: cover;
     object-position: center;
+    animation: reveal 1s ease;
 }
 
 a, a:active, a:hover, a:focus {
     text-decoration: none;
     color: black;
+}
+
+@keyframes reveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
 }
