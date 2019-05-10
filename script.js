@@ -7,7 +7,6 @@
     let dateString = '';
     for (let i = 0; i < count; i++) {
         // Get date
-        date.setDate(date.getDate() - 1)
         dateString = date.toISOString().substr(0, 10);
         
         // Do call
@@ -45,5 +44,8 @@
         li.setAttribute('class', 'image-item');
         li.appendChild(a);
         wall.append(li);
+
+        // Go to previous date
+        date.setDate(date.getDate() - 1)
     }
 })();
