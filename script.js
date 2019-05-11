@@ -1,13 +1,13 @@
 (async function() {
-    const url = "https://api.nasa.gov/planetary/apod?api_key=xstEYQCA6wByrwDBI51liejfp0HOQyF8gzqqXjcI";
-    const count = 10;
-
+    const url  = "https://api.nasa.gov/planetary/apod?api_key=xstEYQCA6wByrwDBI51liejfp0HOQyF8gzqqXjcI";
     const wall = document.querySelector('.image-wall');
-    let date = new Date();
-    let dateString = '';
-    for (let i = 0; i < count; i++) {
+    
+    // Loop over past images
+    let date  = new Date();
+    let count = 10;
+    while (count--) {
         // Get date
-        dateString = date.toISOString().substr(0, 10);
+        let dateString = date.toISOString().substr(0, 10);
         
         // Do API call
         let response = await fetch(url + '&date=' + dateString);
@@ -21,11 +21,11 @@
         let data = await response.json();
         
         // Make nodes
-        let li          = document.createElement('li');
-        let a           = document.createElement('a');
-        let figure      = document.createElement('figure');
-        let img         = document.createElement('img');
-        let figcaption  = document.createElement('figcaption');
+        let li         = document.createElement('li');
+        let a          = document.createElement('a');
+        let figure     = document.createElement('figure');
+        let img        = document.createElement('img');
+        let figcaption = document.createElement('figcaption');
 
         // Append nodes
         let captionText = null;
@@ -52,7 +52,7 @@
         li.appendChild(a);
         wall.append(li);
 
-        // Go to previous date
+        // Set date to previous date
         date.setDate(date.getDate() - 1)
     }
 })();
